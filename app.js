@@ -14,11 +14,14 @@ function generateSlides() {
         });
     });
 
-    Reveal.initialize({
-        hash: true,
-        slideNumber: true,
-        plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes]
-    });
+    // Réinitialiser Reveal.js après avoir ajouté les slides
+    setTimeout(() => {
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes]
+        });
+    }, 100); // Attendre un court instant avant de réinitialiser Reveal.js
 }
 
 function createDisappearingSteps(sentence) {
