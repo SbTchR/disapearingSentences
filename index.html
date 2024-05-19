@@ -7,31 +7,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
     <style>
-        section {
-            display: block !important;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #333;
+            color: white;
+        }
+        #sentence-form {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .reveal {
+            display: none;
+        }
+        .slide {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Disappearing Sentences</h1>
-    <form id="sentence-form">
-        <textarea id="sentences" rows="10" cols="50" placeholder="Enter 5-6 sentences, each on a new line"></textarea>
+    <div id="sentence-form">
+        <textarea id="sentences" placeholder="Enter 5-6 sentences, each on a new line"></textarea>
         <br>
-        <button type="button" onclick="generateSlides(0)">Show Full Sentences</button>
-        <button type="button" onclick="generateSlides(1)">Step 1: One Word Out of Two</button>
-        <button type="button" onclick="generateSlides(2)">Step 2: Alternate Words</button>
-        <button type="button" onclick="generateSlides(3)">Step 3: All Words Disappeared</button>
-    </form>
+        <button type="button" onclick="generateSlides(1)">Étape 1</button>
+        <button type="button" onclick="generateSlides(2)">Étape 2</button>
+        <button type="button" onclick="generateSlides(3)">Étape 3</button>
+        <button type="button" onclick="generateSlides(4)">Étape 4</button>
+    </div>
     <div class="reveal">
         <div class="slides" id="slides">
             <!-- Slides will be generated here -->
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
