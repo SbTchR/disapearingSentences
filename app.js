@@ -1,7 +1,6 @@
 function generateSlides(step) {
     const sentences = document.getElementById('sentences').value.split('\n').filter(sentence => sentence.trim() !== '');
-    const slidesContainer = document.getElementById('slides');
-    const formContainer = document.getElementById('sentence-form');
+    const slidesContainer = document.getElementById('slides-container');
     slidesContainer.innerHTML = ''; // Clear previous slides
 
     sentences.forEach(sentence => {
@@ -28,18 +27,5 @@ function generateSlides(step) {
         slidesContainer.appendChild(slide);
     });
 
-    formContainer.style.display = 'none';
     document.querySelector('.reveal').style.display = 'block';
-
-    // Réinitialiser Reveal.js après avoir ajouté les slides
-    setTimeout(() => {
-        Reveal.configure({ 
-            hash: true, 
-            slideNumber: true 
-        });
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true
-        });
-    }, 100); // Attendre un court instant avant de réinitialiser Reveal.js
 }
