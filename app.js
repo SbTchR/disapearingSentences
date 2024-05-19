@@ -11,6 +11,7 @@ function generateSlides() {
             let slide = document.createElement('section');
             slide.textContent = step;
             slidesContainer.appendChild(slide);
+            console.log('Added slide:', slide); // Vérifiez chaque slide ajoutée
         });
     });
 
