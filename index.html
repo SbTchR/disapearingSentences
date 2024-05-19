@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
     <style>
-      section {
-        display: block !important;
-      }
+        section {
+            display: block !important;
+        }
     </style>
 </head>
 <body>
@@ -17,7 +17,10 @@
     <form id="sentence-form">
         <textarea id="sentences" rows="10" cols="50" placeholder="Enter 5-6 sentences, each on a new line"></textarea>
         <br>
-        <button type="button" onclick="generateSlides()">Generate Slides</button>
+        <button type="button" onclick="generateSlides(0)">Show Full Sentences</button>
+        <button type="button" onclick="generateSlides(1)">Step 1: One Word Out of Two</button>
+        <button type="button" onclick="generateSlides(2)">Step 2: Alternate Words</button>
+        <button type="button" onclick="generateSlides(3)">Step 3: All Words Disappeared</button>
     </form>
     <div class="reveal">
         <div class="slides" id="slides">
