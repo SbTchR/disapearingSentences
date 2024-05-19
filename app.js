@@ -14,7 +14,11 @@ function generateSlides() {
         });
     });
 
-    Reveal.initialize();
+    Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes]
+    });
 }
 
 function createDisappearingSteps(sentence) {
