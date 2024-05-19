@@ -19,6 +19,10 @@ function generateSlides() {
 
     // Réinitialiser Reveal.js après avoir ajouté les slides
     setTimeout(() => {
+        Reveal.configure({ 
+            hash: true, 
+            slideNumber: true 
+        });
         Reveal.initialize({
             hash: true,
             slideNumber: true,
