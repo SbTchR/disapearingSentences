@@ -10,6 +10,7 @@ function generateSlides() {
         steps.forEach(step => {
             let slide = document.createElement('section');
             slide.textContent = step;
+            slide.classList.add('slide'); // Ajoutez la classe 'slide'
             slidesContainer.appendChild(slide);
             console.log('Added slide:', slide); // Vérifiez chaque slide ajoutée
         });
