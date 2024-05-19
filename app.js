@@ -26,6 +26,13 @@ function generateSlides(step) {
         slide.textContent = modifiedSentence;
         slidesContainer.appendChild(slide);
     });
+}
 
-    document.querySelector('.reveal').style.display = 'block';
+function toggleForm() {
+    const formContainer = document.getElementById('sentence-form');
+    if (formContainer.style.display === 'none') {
+        formContainer.style.display = 'block';
+    } else {
+        formContainer.style.display = 'none';
+    }
 }
