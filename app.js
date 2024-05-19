@@ -1,4 +1,4 @@
-function generateSlides() {
+function generateSlides(stepIndex) {
     const sentences = document.getElementById('sentences').value.split('\n');
     console.log('Sentences:', sentences); // Debug
     const slidesContainer = document.getElementById('slides');
@@ -7,12 +7,13 @@ function generateSlides() {
     sentences.forEach(sentence => {
         let steps = createDisappearingSteps(sentence);
         console.log('Steps:', steps); // Debug
-        steps.forEach(step => {
+        if (stepIndex < steps.length) {
             let slide = document.createElement('section');
-            slide.textContent = step;
+            slide.className = 'slide'; // Ajouter une classe pour chaque slide
+            slide.textContent = steps[stepIndex];
             slidesContainer.appendChild(slide);
             console.log('Added slide:', slide); // Vérifiez chaque slide ajoutée
-        });
+        }
     });
 
     console.log('Slides:', slidesContainer.innerHTML); // Vérifiez le contenu des slides
