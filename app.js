@@ -1,22 +1,35 @@
-function generateSlides(stepIndex) {
-    const sentences = document.getElementById('sentences').value.split('\n');
-    console.log('Sentences:', sentences); // Debug
+function generateSlides(step) {
+    const sentences = document.getElementById('sentences').value.split('\n').filter(sentence => sentence.trim() !== '');
     const slidesContainer = document.getElementById('slides');
+    const formContainer = document.getElementById('sentence-form');
     slidesContainer.innerHTML = ''; // Clear previous slides
 
     sentences.forEach(sentence => {
-        let steps = createDisappearingSteps(sentence);
-        console.log('Steps:', steps); // Debug
-        if (stepIndex < steps.length) {
-            let slide = document.createElement('section');
-            slide.className = 'slide'; // Ajouter une classe pour chaque slide
-            slide.textContent = steps[stepIndex];
-            slidesContainer.appendChild(slide);
-            console.log('Added slide:', slide); // Vérifiez chaque slide ajoutée
+        let modifiedSentence = '';
+
+        switch(step) {
+            case 1:
+                modifiedSentence = sentence; // Full sentence
+                break;
+            case 2:
+                modifiedSentence = sentence.split(' ').map((word, index) => index % 2 === 0 ? '_'.repeat(word.length) : word).join(' ');
+                break;
+            case 3:
+                modifiedSentence = sentence.split(' ').map((word, index) => index % 2 !== 0 ? '_'.repeat(word.length) : word).join(' ');
+                break;
+            case 4:
+                modifiedSentence = sentence.split(' ').map(word => '_'.repeat(word.length)).join(' ');
+                break;
         }
+
+        let slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.textContent = modifiedSentence;
+        slidesContainer.appendChild(slide);
     });
 
-    console.log('Slides:', slidesContainer.innerHTML); // Vérifiez le contenu des slides
+    formContainer.style.display = 'none';
+    document.querySelector('.reveal').style.display = 'block';
 
     // Réinitialiser Reveal.js après avoir ajouté les slides
     setTimeout(() => {
@@ -26,25 +39,7 @@ function generateSlides(stepIndex) {
         });
         Reveal.initialize({
             hash: true,
-            slideNumber: true,
-            plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes]
+            slideNumber: true
         });
-        console.log('Reveal.js initialized'); // Debug
     }, 100); // Attendre un court instant avant de réinitialiser Reveal.js
-}
-
-function createDisappearingSteps(sentence) {
-    let steps = [];
-    steps.push(sentence); // Full sentence
-
-    // Step 1: One word out of two
-    steps.push(sentence.split(' ').map((word, index) => (index % 2 === 0 ? '_'.repeat(word.length) : word)).join(' '));
-
-    // Step 2: Alternate words
-    steps.push(sentence.split(' ').map((word, index) => (index % 2 !== 0 ? '_'.repeat(word.length) : word)).join(' '));
-
-    // Step 3: All words disappeared
-    steps.push(sentence.split(' ').map(word => '_'.repeat(word.length)).join(' '));
-
-    return steps;
 }
