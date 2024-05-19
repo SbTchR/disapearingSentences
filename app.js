@@ -3,7 +3,7 @@ function generateSlides(step) {
     const slidesContainer = document.getElementById('slides-container');
     slidesContainer.innerHTML = ''; // Clear previous slides
 
-    sentences.forEach(sentence => {
+    sentences.forEach((sentence, index) => {
         let modifiedSentence = '';
 
         switch(step) {
@@ -23,7 +23,7 @@ function generateSlides(step) {
 
         let slide = document.createElement('div');
         slide.className = 'slide';
-        slide.textContent = modifiedSentence;
+        slide.textContent = `${index + 1}. ${modifiedSentence}`;
         slidesContainer.appendChild(slide);
     });
 }
