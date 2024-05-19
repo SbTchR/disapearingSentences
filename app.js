@@ -14,6 +14,8 @@ function generateSlides() {
         });
     });
 
+    console.log('Slides:', slidesContainer.innerHTML); // Vérifiez le contenu des slides
+
     // Réinitialiser Reveal.js après avoir ajouté les slides
     setTimeout(() => {
         Reveal.initialize({
@@ -21,6 +23,7 @@ function generateSlides() {
             slideNumber: true,
             plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes]
         });
+        console.log('Reveal.js initialized'); // Debug
     }, 100); // Attendre un court instant avant de réinitialiser Reveal.js
 }
 
