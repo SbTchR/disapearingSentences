@@ -1,10 +1,12 @@
 function generateSlides() {
     const sentences = document.getElementById('sentences').value.split('\n');
+    console.log('Sentences:', sentences); // Debug
     const slidesContainer = document.getElementById('slides');
     slidesContainer.innerHTML = ''; // Clear previous slides
 
     sentences.forEach(sentence => {
         let steps = createDisappearingSteps(sentence);
+        console.log('Steps:', steps); // Debug
         steps.forEach(step => {
             let slide = document.createElement('section');
             slide.textContent = step;
