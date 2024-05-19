@@ -1,26 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disappearing Sentences</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-</head>
-<body>
-    <div id="app">
-        <h1>Disappearing Sentences</h1>
-        <form id="sentence-form">
-            <textarea id="sentences" rows="10" cols="50" placeholder="Enter 5-6 sentences, each on a new line"></textarea>
-            <br>
-            <button type="button" onclick="generateSlides()">Generate Slides</button>
-        </form>
-        <div class="reveal">
-            <div class="slides" id="slides">
-                <!-- Slides will be generated here -->
-            </div>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
+function generateSlides() {
+    const sentences = document.getElementById('sentences').value.split('\n');
+    const slidesContainer = document.getElementById('slides');
+    slidesContainer.innerHTML = ''; // Clear previous slides
+
+    sentences.forEach(sentence => {
+        let steps = createDisappearingSteps(sentence);
+        steps.forEach(step => {
+            let slide = document.createElement('section');
+            slide.textContent = step;
+            slidesContainer.appendChild(slide);
+        });
+    });
+
+    Reveal.initialize();
+}
+
+function createDisappearingSteps(sentence) {
+    let steps = [];
+    steps.push(sentence); // Full sentence
+
+    // Step 1: One word out of two
+    steps.push(sentence.split(' ').map((word, index) => (index % 2 === 0 ? '_'.repeat(word.length) : word)).join(' '));
+
+    // Step 2: Alternate words
+    steps.push(sentence.split(' ').map((word, index) => (index % 2 !== 0 ? '_'.repeat(word.length) : word)).join(' '));
+
+    // Step 3: All words disappeared
+    steps.push(sentence.split(' ').map(word => '_'.repeat(word.length)).join(' '));
+
+    return steps;
+}
