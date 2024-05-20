@@ -38,9 +38,12 @@ function adjustFontSize() {
 
         // Decrease font size until the sentence fits on one line
         while (slide.scrollWidth > slide.clientWidth && fontSize > 0) {
-            fontSize -= 1; // Adjust font size by 1px until it fits
+            fontSize--; // Adjust font size by 1px until it fits
             slide.style.fontSize = fontSize + 'px';
         }
+
+        // Reduce the font size by an additional point to ensure no truncation
+        slide.style.fontSize = (fontSize - 1) + 'px';
     });
 }
 
