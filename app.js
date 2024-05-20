@@ -43,7 +43,7 @@ function adjustFontSize() {
         }
 
         // Reduce the font size by an additional point to ensure no truncation
-        slide.style.fontSize = (fontSize - 1) + 'px';
+        slide.style.fontSize = (fontSize - 3) + 'px';
     });
 }
 
