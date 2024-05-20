@@ -38,7 +38,7 @@ function adjustFontSize() {
 
         // Decrease font size until the sentence fits on one line
         while (slide.scrollWidth > slide.clientWidth && fontSize > 0) {
-            fontSize--;
+            fontSize -= 1; // Adjust font size by 1px until it fits
             slide.style.fontSize = fontSize + 'px';
         }
     });
