@@ -11,12 +11,16 @@
         body {
             font-family: 'Quicksand', sans-serif;
             text-align: center;
-            background-color: #1a237e; /* Fond bleu plus foncé */
+            background-color: #cadff5; /* Fond bleu plus foncé */
             color: white;
             padding: 20px;
         }
         #sentence-form {
             margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #001499;
         }
         textarea {
             width: 80%;
@@ -33,23 +37,79 @@
             font-size: 1.2em;
             border: none;
             border-radius: 5px;
-            background-color: #3498db;
+            background-color: #0e6df2;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #2980b9;
+            background-color: #0023c0;
         }
         .slide {
-            margin: 30px 0; /* Plus d'espace entre les phrases */
+            margin: 25px auto; /* Centré avec marge verticale */
+            padding: 35px 20px; /* Padding intérieur */
+            background-color: #00a979; /* Fond pour l'encadré, contrastant avec le body */
+            border: 2px solid #ffffff; /* Bordure claire et contrastante */
+            border-radius: 8px; /* Coins arrondis */
+            font-size: 2.3em; /* Taille de police pour lisibilité */
+            color: #ecf0f1; /* Couleur de texte claire */
+            
+            /* Comportement sur une seule ligne */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            width: 100%;
-            text-align: left;
-            display: block;
+            
+            width: 90%; /* Largeur pour voir l'effet d'encadré */
+            display: block; 
+            text-align: left; /* Alignement du texte à gauche */
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25); /* Ombre pour la profondeur */
         }
+
+        /* Couleurs de fond pour les slides (à appliquer via JS) */
+        .slide-bg-1 { background-color: #001c8c; border-color: #0028c6; }
+        .slide-bg-2 { background-color: #166c00; border-color: #21a200; }
+        .slide-bg-3 { background-color: #840e01; border-color: #ab1100; }
+        .slide-bg-4 { background-color: #460063; border-color: #6f009f; }
+
+        /* Style pour les "traits" courts remplaçant chaque lettre cachée (Levels 2, 3, 4) */
+        .placeholder-letter {
+            display: inline-block;
+            width: 0.7em;   /* Largeur du trait (court) */
+            height: 0.25em; /* Épaisseur du trait */
+            /* La couleur sera définie par la classe parente du mot ci-dessous */
+            /* background-color: #7f8c8d; */ 
+            border-radius: 1px; /* Légèrement arrondi */
+            margin-left: 0.02em; /* Petit espace avant le trait (réduit) */
+            margin-right: 0.1em; /* ESPACE APRÈS LE TRAIT (réduit pour compacter) */
+            vertical-align: middle; /* Bon alignement vertical avec le texte adjacent */
+            position: relative; /* Permet un ajustement fin si nécessaire */
+            top: -0.1em; /* Ajustement vertical fin pour centrer par rapport au texte */
+        }
+
+        /* Conteneur pour un mot masqué par des placeholders, afin de lui donner une couleur unique */
+        .word-placeholder-group {
+            display: inline-block; /* Nécessaire pour que le groupe se comporte comme un mot */
+            margin-right: 0.5em; /* Espace supplémentaire entre les mots masqués */
+        }
+
+        /* Couleurs pour les traits des mots masqués (à appliquer sur .word-placeholder-group via JS) */
+        .word-placeholder-color-1 .placeholder-letter { background-color: #2ecc71; } /* Vert */
+        .word-placeholder-color-2 .placeholder-letter { background-color: #e67e22; } /* Orange */
+        .word-placeholder-color-3 .placeholder-letter { background-color: #f1c40f; } /* Jaune */
+        .word-placeholder-color-4 .placeholder-letter { background-color: #3498db; } /* Bleu (différent du slide) */
+
+        /* Style pour des MOTS ENTIERS masqués (préserve la longueur exacte du mot original) */
+        /* Utile si un niveau masque des mots entiers différemment */
+        .masked-word {
+            background-color: #7f8c8d; /* Fond coloré pour la zone du mot */
+            color: transparent;        /* Rend le texte original invisible */
+            border-radius: 4px;        /* Coins arrondis pour le fond */
+            padding: 0.1em 0.2em;      /* Léger padding autour du texte original (invisible) */
+            margin: 0 0.1em;           /* Petit espace autour du mot masqué */
+            user-select: none;         /* Empêche la sélection du texte transparent */
+            white-space: nowrap;       /* Important pour que le span prenne la largeur du mot */
+        }
+
         #control-buttons {
             margin-top: 20px;
         }
