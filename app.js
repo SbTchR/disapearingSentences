@@ -29,7 +29,10 @@ function generateSlides(step) {
                     case 3: // Un mot sur deux, commençant par le deuxième
                         shouldMaskWord = wordIndexInSentence % 2 !== 0;
                         break;
-                    case 4: // Tous les mots
+                    case 4: // Deux mots sur trois masqués (révéler chaque 3e mot)
+                        shouldMaskWord = (wordIndexInSentence % 3) !== 2;
+                        break;
+                    case 5: // Tous les mots (ancien niveau 4)
                         shouldMaskWord = true;
                         break;
                 }
